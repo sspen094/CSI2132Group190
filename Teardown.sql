@@ -1,0 +1,14 @@
+DELETE FROM Hotel_Chain;
+DELETE FROM Office;
+DELETE FROM Office_Phone;
+DELETE FROM Hotel;
+DELETE FROM Hotel_Phone;
+DELETE FROM Room;
+DELETE FROM Room_Amenities;
+DELETE FROM Room_Damages;
+DELETE FROM booking;
+DELETE FROM customer;
+DELETE FROM employee;
+DELETE FROM payment;
+DELETE FROM renting;
+DROP TABLE Hotel_Chain, Office, Office_Phone, Hotel, Hotel_Phone, Room, Room_Amenities, Room_Damages, booking, customer, employee, payment, renting CASCADE;
