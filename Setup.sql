@@ -80,16 +80,17 @@ CREATE TABLE IF NOT EXISTS Room_Damages(
 );
 
 CREATE TABLE IF NOT EXISTS Employee(
-	e_ID INTEGER PRIMARY KEY,
-	id_Type VARCHAR(3) CHECK (id_Type = 'SSN' OR id_Type = 'SIN'),
+	e_ID SERIAL PRIMARY KEY,
+	id_Type VARCHAR(3) CHECK (id_Type IN ('SSN', 'SIN')),
+	id_Number VARCHAR(20) UNIQUE NOT NULL,
 	first_name VARCHAR(50),
 	last_name VARCHAR(50),
 	Address_Street VARCHAR (254),
 	Address_City VARCHAR (50),
 	Address_Province VARCHAR (50),
 	Address_Postal_Code VARCHAR (9), 
-	manages_hotel INTEGER, --Decided to have manages FK inside employee rather than hotel
-	works_for_Hotel INTEGER,
+	manages_hotel INTEGER UNIQUE, --Decided to have manages FK inside employee rather than hotel
+	works_for_Hotel INTEGER NOT NULL,
 	FOREIGN KEY(manages_hotel) REFERENCES Hotel(H_Building_No)
 	on delete set null
 	on update cascade,
@@ -99,15 +100,16 @@ CREATE TABLE IF NOT EXISTS Employee(
 );
 
 CREATE TABLE IF NOT EXISTS Customer(
-	c_ID INTEGER PRIMARY KEY,
-	id_Type VARCHAR(3) CHECK (id_Type = 'SSN' OR id_Type = 'SIN' OR id_Type = 'DRL'),
+	c_ID SERIAL PRIMARY KEY,
+	id_Type VARCHAR(3) CHECK (id_Type IN ('SSN', 'SIN', 'DRL')),
+	id_Number VARCHAR(20) UNIQUE NOT NULL,
 	first_name VARCHAR(50),
 	last_name VARCHAR(50),
 	Address_Street VARCHAR (254),
 	Address_City VARCHAR (50),
 	Address_Province VARCHAR (50),
 	Address_Postal_Code VARCHAR (9), 
-	date_of_registration DATE
+	date_of_registration DATE NOT NULL DEFAULT CURRENT_DATE
 );
 
 CREATE TABLE IF NOT EXISTS Renting(
