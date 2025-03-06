@@ -17,7 +17,7 @@ CREATE TABLE IF NOT EXISTS Office(
 
 CREATE TABLE IF NOT EXISTS Office_Phone(
 	O_Building_No INTEGER,
-	Phone_Number INTEGER,
+	Phone_Number VARCHAR(20),
 	PRIMARY KEY(O_Building_No, Phone_Number),
 	FOREIGN KEY(O_Building_No) REFERENCES Office(O_Building_No)
 	on delete cascade
@@ -40,17 +40,18 @@ CREATE TABLE IF NOT EXISTS Hotel(
 
 CREATE TABLE IF NOT EXISTS Hotel_Phone(
 	H_Building_No INTEGER,
-	Phone_Number INTEGER,
+	Phone_Number VARCHAR(20),
 	PRIMARY KEY(H_Building_No, Phone_Number),
 	FOREIGN KEY(H_Building_No) REFERENCES Hotel(H_Building_No)
+	on delete cascade
+	on update cascade
 );
 
 CREATE TABLE IF NOT EXISTS Room(
 	Room_Number INTEGER,
 	H_Building_No INTEGER,
-	price INTEGER CHECK (price >= 0),
-	view_is_mountain BOOLEAN,
-	view_is_ocean BOOLEAN,
+	price DECIMAL(65,2) CHECK (price >= 0),
+	view_type VARCHAR(8) CHECK (view_type IN ('mountain', 'ocean') OR view_type IS NULL),
 	extendable BOOLEAN,
 	PRIMARY KEY(Room_number, H_Building_No),
 	FOREIGN KEY(H_Building_No) REFERENCES Hotel(H_Building_No)
