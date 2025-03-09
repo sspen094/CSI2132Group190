@@ -122,10 +122,10 @@ CREATE TABLE IF NOT EXISTS Renting(
 
 CREATE TABLE IF NOT EXISTS Payment(
 	r_ID INTEGER PRIMARY KEY,
-	amount INTEGER CHECK(amount >= 0),
-	payment_method VARCHAR(12) 
-		CHECK(payment_method='CreditCard' OR payment_method='DebitCard' OR 
-			payment_method='Cash' OR payment_method='BankTransfer'),
+	amount DECIMAL(10,2) CHECK (amount >= 0),
+	payment_method VARCHAR(12) CHECK (
+        payment_method IN ('CreditCard', 'DebitCard', 'Cash', 'BankTransfer')
+    ),
 	FOREIGN KEY (r_ID) REFERENCES Renting(r_ID)
 	on delete cascade
 	on update cascade
