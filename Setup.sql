@@ -51,6 +51,7 @@ CREATE TABLE IF NOT EXISTS Room(
 	Room_Number INTEGER,
 	H_Building_No INTEGER,
 	price DECIMAL(65,2) CHECK (price >= 0),
+	capacity INTEGER CHECK (capacity BETWEEN 1 AND 6),
 	view_type VARCHAR(8) CHECK (view_type IN ('mountain', 'ocean') OR view_type IS NULL),
 	extendable BOOLEAN,
 	PRIMARY KEY(Room_number, H_Building_No),
