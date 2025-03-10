@@ -1,0 +1,57 @@
+note this is a text file representing question 2d but is implemented in code dynamically, pseudo code ingoring some imports and inits.
+Triggers are in the setup.sql file
+Implementations for each can create be created by setting the table name and columns and taking values as parameters
+
+
+public class DBModifier{
+
+    
+    public static void DBInsert(String tableName, Map<String,String> insertMap){
+        Connection db = DriverManager.getConnection(url, username, password);
+        Statement st = db.createStatement();
+        String sql = "INSERT INTO " + tableName;
+        String tableParams = "(";
+        String valueParams = "("
+
+        for (Map.Entry<String, String> i: map.entrySet()){
+            if (tableParams.equals("(") && valueParams.equals("(")) {
+                tableParams = tableParams + i.getKey();
+                valueParams = valueParams + i.getValue();
+            }
+            else {
+                tableParams = tableParams + ", " + i.getKey();
+                valueParams = valueParams + ", " + i.getValue();
+            }
+        }
+
+        sql = sql + tableParams + ") VALUES " + valueParams + ")"
+
+        st.executeUpdate(sql);
+
+        rs.close();
+        st.close();
+    }
+
+    public static void DBUpdateByKey(String tableName, String pkColumn, String pk, String column, String value){
+        Connection db = DriverManager.getConnection(url, username, password);
+        Statement st = db.createStatement();
+        String sql = "UPDATE " + tableName + " SET " + column + " = " + value " WHERE " + pkColumn + " = " + pk;
+
+        st.executeUpdate(sql);
+
+        rs.close();
+        st.close();
+    }
+
+    public static void DBDeleteByKey(String tableName, String pkColumn, String pk){
+        Connection db = DriverManager.getConnection(url, username, password);
+        Statement st = db.createStatement();
+        String sql = "DELETE " + tableName + " WHERE " + pkColumn + " = " + pk;
+
+        st.executeUpdate(sql);
+
+        rs.close();
+        st.close();
+    }
+
+}

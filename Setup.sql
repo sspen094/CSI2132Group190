@@ -81,9 +81,8 @@ CREATE TABLE IF NOT EXISTS Room_Damages(
 );
 
 CREATE TABLE IF NOT EXISTS Employee(
-	e_ID SERIAL PRIMARY KEY,
+	e_id VARCHAR(20) PRIMARY KEY,
 	id_Type VARCHAR(3) CHECK (id_Type IN ('SSN', 'SIN')),
-	id_Number VARCHAR(20) UNIQUE NOT NULL,
 	first_name VARCHAR(50),
 	last_name VARCHAR(50),
 	Address_Street VARCHAR (254),
@@ -101,9 +100,8 @@ CREATE TABLE IF NOT EXISTS Employee(
 );
 
 CREATE TABLE IF NOT EXISTS Customer(
-	c_ID SERIAL PRIMARY KEY,
+	c_id VARCHAR(20) PRIMARY KEY,
 	id_Type VARCHAR(3) CHECK (id_Type IN ('SSN', 'SIN', 'DRL')),
-	id_Number VARCHAR(20) UNIQUE NOT NULL,
 	first_name VARCHAR(50),
 	last_name VARCHAR(50),
 	Address_Street VARCHAR (254),
@@ -113,10 +111,28 @@ CREATE TABLE IF NOT EXISTS Customer(
 	date_of_registration DATE NOT NULL DEFAULT CURRENT_DATE
 );
 
+CREATE TABLE IF NOT EXISTS Booking(
+	b_ID SERIAL PRIMARY KEY,
+	start_date DATE CHECK (start_date>=CURRENT_DATE),
+	end_date DATE CHECK (end_date>=start_date),
+	c_ID VARCHAR(20),
+	room_number INTEGER,
+	H_building_no INTEGER,
+	FOREIGN KEY(c_ID) REFERENCES Customer(c_ID)
+	on delete set null
+	on update cascade,
+	FOREIGN KEY(room_number, H_building_no) REFERENCES Room(room_number, H_building_no)
+	on delete cascade
+	on update cascade
+);
 CREATE TABLE IF NOT EXISTS Renting(
 	r_ID SERIAL PRIMARY KEY,
-	e_ID INTEGER,
+	e_ID VARCHAR(20),
+	b_ID INTEGER,
 	FOREIGN KEY (e_ID) REFERENCES Employee(e_ID)
+	on delete set null
+	on update cascade,
+    FOREIGN KEY (b_ID) REFERENCES Booking(b_ID)
 	on delete set null
 	on update cascade
 );
@@ -132,21 +148,54 @@ CREATE TABLE IF NOT EXISTS Payment(
 	on update cascade
 );
 
-CREATE TABLE IF NOT EXISTS Booking(
-	b_ID SERIAL PRIMARY KEY,
-	start_date DATE CHECK (start_date>=CURRENT_DATE),
-	end_date DATE CHECK (end_date>=start_date),
-	c_ID INTEGER,
-	r_ID INTEGER, 
-	room_number INTEGER,
-	H_building_no INTEGER,
-	FOREIGN KEY(c_ID) REFERENCES Customer(c_ID)
-	on delete set null
-	on update cascade,
-	FOREIGN KEY(r_ID) REFERENCES Renting(r_ID)
-	on delete set null
-	on update cascade,
-	FOREIGN KEY(room_number, H_building_no) REFERENCES Room(room_number, H_building_no)
-	on delete cascade
-	on update cascade
-);
+CREATE OR REPLACE FUNCTION default_room() 
+RETURNS TRIGGER AS $$ 
+BEGIN
+		INSERT INTO Room(Room_Number, H_Building_No, price, capacity)
+		VALUES (100, NEW.H_Building_No, 0.00, 1);
+		RETURN NEW;
+END; 
+$$ LANGUAGE plpgsql; 
+
+
+CREATE OR REPLACE TRIGGER hotel_creation AFTER INSERT ON Hotel
+	FOR EACH ROW
+	EXECUTE FUNCTION default_room();
+
+CREATE OR REPLACE FUNCTION max_five_bookings() 
+RETURNS TRIGGER AS $$ 
+BEGIN
+		IF ((SELECT COUNT(*) FROM Booking b WHERE b.c_ID = NEW.c_ID)>=5) THEN
+			ROLLBACK;
+		END IF;
+		RETURN NEW;
+END; 
+$$ LANGUAGE plpgsql; 
+
+
+CREATE OR REPLACE TRIGGER max_bookings BEFORE INSERT ON Booking
+	FOR EACH ROW
+	EXECUTE FUNCTION max_five_bookings();
+
+CREATE OR REPLACE FUNCTION not_already_booked() 
+RETURNS TRIGGER AS $$ 
+BEGIN	
+		IF EXISTS
+		(SELECT s.room_number FROM Booking s 
+		WHERE NEW.room_number=s.room_number AND NEW.h_building_no=s.h_building_no AND
+		NOT ((s.start_date>NEW.start_date AND s.start_date>NEW.end_date) OR 
+		(s.end_date<NEW.start_date AND s.end_date<NEW.end_date))) THEN
+			ROLLBACK;
+		END IF;
+		RETURN NEW;
+END; 
+$$ LANGUAGE plpgsql; 
+
+
+CREATE OR REPLACE TRIGGER no_overlap BEFORE INSERT ON Booking
+	FOR EACH ROW
+	EXECUTE FUNCTION not_already_booked();
+
+
+
+
