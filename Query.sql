@@ -16,3 +16,11 @@ WHERE Category = 5;
 -- Query 4: List All Hotel Chains
 SELECT c_Name 
 FROM Hotel_Chain;
+
+-- Query 5: Find the Average Price of Rooms in Each Hotel (Lowest to Highest)
+SELECT H_Building_No, ROUND(AVG(price), 2) AS avg_room_price
+FROM Room
+GROUP BY H_Building_No
+ORDER BY avg_room_price ASC;
+
+-- Query 6: 
