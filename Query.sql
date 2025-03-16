@@ -17,10 +17,17 @@ WHERE Category = 5;
 SELECT c_Name 
 FROM Hotel_Chain;
 
--- Query 5: Find the Average Price of Rooms in Each Hotel (Lowest to Highest)
+-- Query 5 (Aggregation): Find the Average Price of Rooms in Each Hotel (Lowest to Highest)
 SELECT H_Building_No, ROUND(AVG(price), 2) AS avg_room_price
 FROM Room
 GROUP BY H_Building_No
 ORDER BY avg_room_price ASC;
 
--- Query 6: 
+-- Query 6 (Nested): Find Hotels That Have at Least One Room More Expensive Than the Average Room Price
+SELECT DISTINCT h.H_Building_No, h.c_Name, h.Address_City, h.Category
+FROM Hotel h
+WHERE h.H_Building_No IN (
+    SELECT r.H_Building_No
+    FROM Room r
+    WHERE r.price > (SELECT AVG(price) FROM Room)
+);
