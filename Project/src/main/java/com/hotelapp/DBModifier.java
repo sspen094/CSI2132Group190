@@ -13,6 +13,7 @@ public class DBModifier {
     public static void DBInsert(String tableName, Map<String,String> insertMap){
 
         try {
+            Class.forName("org.postgresql.Driver");
             Connection db = DriverManager.getConnection(url, username, password);
             Statement st = db.createStatement();
             String sql = "INSERT INTO " + tableName;
@@ -30,9 +31,12 @@ public class DBModifier {
             }
 
             sql = sql + tableParams + ") VALUES " + valueParams + ")";
+            System.out.println(sql);
             st.executeUpdate(sql);
             st.close();
         } catch( SQLException e){
+            e.printStackTrace();
+        }   catch( ClassNotFoundException e){
             e.printStackTrace();
         }
     }

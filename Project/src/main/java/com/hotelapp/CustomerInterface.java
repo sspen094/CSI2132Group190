@@ -74,8 +74,8 @@ public class CustomerInterface {
     }
 
     public static void main(String[] args){
-        //customerInsert("87654321", "SSN", "BILLYBOB", "JONES", "1234 Fake Lane", "OTTAWA", "ON", "A1B2C3");
+        customerInsert("87654321", "SSN", "BILLYBOB", "JONES", "1234 Fake Lane", "OTTAWA", "ON", "A1B2C3");
         //updateCity("87654321", "NEPEAN");
-        delete("87654321");
+        //delete("87654321");
     }
 }
