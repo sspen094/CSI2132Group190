@@ -102,6 +102,31 @@
           </form>
         </div>
       </div>
+      <div class="row" id="row">
+        <div class="col-md-12">
+          <form
+            class="form-horizontal"
+            name="city-form"
+            action="city-query.jsp"
+            method="POST"
+          >
+            <div class="form-group col-sm-3 mb-3">
+              <label for="city">City</label>
+              <input
+                type="text"
+                class="form-control"
+                name="city"
+                placeholder="Enter Hotel City"
+              />
+            </div>
+            
+            </div>
+            <button type="submit" class="btn btn-primary btn-submit-custom col-sm-3">
+              Submit
+            </button>
+          </form>
+        </div>
+      </div>
     </div>
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"

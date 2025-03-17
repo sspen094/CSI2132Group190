@@ -1,5 +1,6 @@
 package com.hotelapp;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -70,6 +71,11 @@ public class HotelInterface {
 
     public static void delete(String key){
         DBModifier.DBDeleteByKey(TABLE, BUILDING_NO, key);
+    }
+
+    public static ArrayList<ArrayList<String>> getHotelsInCity(String city) {
+        ArrayList<ArrayList<String>> a = DBModifier.DBQuery("hotel", "c_name, email, address_street, address_city, address_province, address_postal_code, category", "address_city = '" + city + "'");
+        return a;
     }
 
     public static void main(String[] args){
