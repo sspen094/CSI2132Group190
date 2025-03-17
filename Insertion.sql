@@ -374,3 +374,51 @@ VALUES
 (103, 40, 180.00, 2, NULL, FALSE),
 (104, 40, 280.00, 5, 'ocean', TRUE),
 (105, 40, 350.00, 6, NULL, FALSE);
+
+
+-- Customers for Hotels 1, 2 & 3
+INSERT INTO Customer (c_id, id_Type, first_name, last_name, Address_Street, Address_City, Address_Province, Address_Postal_Code)
+VALUES 
+('CUST001', 'SSN', 'John', 'Doe', '123 Elm St', 'New York', 'NY', '10001'),
+('CUST002', 'SIN', 'Jane', 'Smith', '456 Oak Ave', 'Los Angeles', 'CA', '90028'),
+('CUST003', 'DRL', 'Alice', 'Johnson', '789 Pine Rd', 'Chicago', 'IL', '60601'),
+('CUST004', 'SSN', 'Bob', 'Brown', '555 Maple St', 'San Francisco', 'CA', '94101'),
+('CUST005', 'SIN', 'Emily', 'Davis', '777 Beach Rd', 'Miami', 'FL', '33101');
+
+
+-- Bookings for Customers
+INSERT INTO Booking (start_date, end_date, c_ID, Room_Number, H_building_no)
+VALUES
+-- New York Hotel 1 (Rooms 101 and 102 are booked)
+(CURRENT_DATE + INTERVAL '1 day', CURRENT_DATE + INTERVAL '6 days', 'CUST001', 101, 1),  
+(CURRENT_DATE + INTERVAL '2 days', CURRENT_DATE + INTERVAL '4 days', 'CUST002', 102, 1),  
+
+-- New York Hotel 2 (Rooms 103 and 104 are booked)
+(CURRENT_DATE + INTERVAL '3 days', CURRENT_DATE + INTERVAL '8 days', 'CUST003', 103, 2),  
+(CURRENT_DATE + INTERVAL '5 days', CURRENT_DATE + INTERVAL '11 days', 'CUST004', 104, 2),  
+
+-- Chicago Hotel 3 (Room 105 is booked)
+(CURRENT_DATE + INTERVAL '6 days', CURRENT_DATE + INTERVAL '13 days', 'CUST005', 105, 3);
+
+
+-- Employees for Hotels 1, 2 & 3
+INSERT INTO Employee (e_id, id_Type, first_name, last_name, Address_Street, Address_City, Address_Province, Address_Postal_Code, works_for_Hotel)
+VALUES
+('EMP001', 'SSN', 'Michael', 'Johnson', '101 Work St', 'New York', 'NY', '10001', 1),
+('EMP002', 'SIN', 'Samantha', 'Lee', '202 Business Rd', 'San Francisco', 'CA', '94101', 2),
+('EMP003', 'SSN', 'David', 'Smith', '303 Downtown Ave', 'Miami', 'FL', '33101', 3);
+
+
+-- Rentings for Customers done by Employees
+INSERT INTO Renting (e_ID, b_ID)
+VALUES
+-- Employee 1 finalizes bookings in New York (Hotel 1)
+('EMP001', 1), 
+('EMP001', 2),
+
+-- Employee 2 finalizes bookings in New York (Hotel 2)
+('EMP002', 3), 
+('EMP002', 4),
+
+-- Employee 3 finalizes bookings in Chicago (Hotel 3)
+('EMP003', 5);
