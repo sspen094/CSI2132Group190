@@ -11,117 +11,62 @@
 
   <body>
     <h2>Employee</h2>
-
-    <div class="container">
+    <div class="container" id="row-container">
       <div class="row" id="row">
-        <div class="col-md-12">
-          <form
-            class="form-horizontal"
-            name="employy-form"
-            action="insert-employee-controller.jsp"
-            method="POST"
-          >
-            <div class="form-group col-sm-3 mb-3">
-              <label for="id">ID</label>
-              <input
-                type="text"
-                class="form-control"
-                name="id"
-                placeholder="Enter ID"
-              />
+        <div class="col-md-3">
+          <div class="card" id="card-container-layout">
+            <div class="card-body" id="card">
+              <h4 class="card-title">Account</h4>
+              <p class="card-text" id="paragraph">Create and Modify Account</p>
+              <a
+                class="btn btn-primary"
+                id="show-btn"
+                href="employee-account.jsp"
+                >Show</a
+              >
             </div>
-            <div class="form-group col-sm-3 mb-3">
-                <label for="type">ID Type</label>
-                <input
-                  type="text"
-                  class="form-control"
-                  name="type"
-                  placeholder="Enter type"
-                />
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="card" id="card-container-layout">
+            <div class="card-body" id="card">
+              <h4 class="card-title">Rentings</h4>
+              <p class="card-text" id="paragraph">
+                Create and search rentings
+              </p>
+              <a class="btn btn-primary" id="show-btn" href="retnings.jsp"
+                >Show</a
+              >
             </div>
-            <div class="form-group col-sm-3 mb-3">
-                    <label for="fname">First Name</label>
-                    <input
-                      type="text"
-                      class="form-control"
-                      name="fname"
-                      placeholder="Enter First Name"
-                    />
-            </div>
-            <div class="form-group col-sm-3 mb-3">
-                        <label for="lname">Last Name</label>
-                        <input
-                          type="text"
-                          class="form-control"
-                          name="lname"
-                          placeholder="Enter Last Name"
-                        />
-            </div>
-            <div class="form-group col-sm-3 mb-3">
-                    <label for="street">Street</label>
-                    <input
-                      type="text"
-                      class="form-control"
-                      name="street"
-                      placeholder="Enter Street"
-                    />
-                </div>
-                <div class="form-group col-sm-3 mb-3">
-                    <label for="city">City</label>
-                    <input
-                      type="text"
-                      class="form-control"
-                      name="city"
-                      placeholder="Enter City"
-                    />
-                </div>
-
-                <div class="form-group col-sm-3 mb-3">
-                    <label for="province">Province</label>
-                    <input
-                      type="text"
-                      class="form-control"
-                      name="province"
-                      placeholder="Enter Province"
-                    />
-                </div>
-
-                <div class="form-group col-sm-3 mb-3">
-                    <label for="postal">Postal Code</label>
-                    <input
-                      type="text"
-                      class="form-control"
-                      name="postal"
-                      placeholder="Enter Postal Code"
-                    />
-                </div>
-
-                <div class="form-group col-sm-3 mb-3">
-                    <label for="works">Works For</label>
-                    <input
-                      type="text"
-                      class="form-control"
-                      name="works"
-                      placeholder="Enter Hotel"
-                    />
-                </div>
-
-                <div class="form-group col-sm-3 mb-3">
-                    <label for="manages">Manages</label>
-                    <input
-                      type="text"
-                      class="form-control"
-                      name="manages"
-                      placeholder="Enter Hotel"
-                    />
-                </div>
-            </div>
-            <button type="submit" class="btn btn-primary btn-submit-custom">
-              Submit
-            </button>
-          </form>
+          </div>
+        </div>
+      <div class="col-md-3">
+        <div class="card" id="card-container-layout">
+          <div class="card-body" id="card">
+            <h4 class="card-title">Hotels</h4>
+            <p class="card-text" id="paragraph">
+              Modify Hotels
+            </p>
+            <a class="btn btn-primary" id="show-btn" href="hotels.jsp"
+              >Show</a
+            >
+          </div>
         </div>
       </div>
+    <div class="col-md-3">
+      <div class="card" id="card-container-layout">
+        <div class="card-body" id="card">
+          <h4 class="card-title">Rooms</h4>
+          <p class="card-text" id="paragraph">
+            Modify Rooms
+          </p>
+          <a class="btn btn-primary" id="show-btn" href="rooms.jsp"
+            >Show</a
+          >
+        </div>
+      </div>
+    </div>
+  </div>
     </div>
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
@@ -130,3 +75,4 @@
     ></script>
   </body>
 </html>
+

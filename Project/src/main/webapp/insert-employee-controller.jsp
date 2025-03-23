@@ -17,4 +17,4 @@ String works = request.getParameter("works");
 manages = (manages=="")?null:manages;
 EmployeeInterface.employeeInsert(id, idType, fName, lName, street, city, province, postalCode, manages, works);
 // redirect to employee
-response.sendRedirect("employee.jsp"); %>
+response.sendRedirect("employee-account.jsp"); %>

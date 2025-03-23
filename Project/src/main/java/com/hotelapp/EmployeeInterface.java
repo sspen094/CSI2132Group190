@@ -39,7 +39,9 @@ public class EmployeeInterface {
     }
 
     private static void employeeUpdate(String key, String column, String value){
-        DBModifier.DBUpdateByKey(TABLE, ID, key, column, value);
+        if (value != null) {
+            DBModifier.DBUpdateByKey(TABLE, ID, key, column, value);
+        }
     }
 
     public static void updateKey(String key, String value){

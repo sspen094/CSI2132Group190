@@ -13,4 +13,4 @@ String province = request.getParameter("province");
 String postalCode = request.getParameter("postal"); 
 CustomerInterface.customerInsert(id, idType, fName, lName, street, city, province, postalCode);
 // redirect to customer
-response.sendRedirect("customer.jsp"); %>
+response.sendRedirect("customer-account.jsp"); %>

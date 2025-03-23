@@ -11,120 +11,34 @@
 
   <body>
     <h2>Customer</h2>
-
-    <div class="container">
+    <div class="container" id="row-container">
       <div class="row" id="row">
-        <div class="col-md-12">
-          <form
-            class="form-horizontal"
-            name="customer-form"
-            action="insert-customer-controller.jsp"
-            method="POST"
-          >
-            <div class="form-group col-sm-3 mb-3">
-              <label for="id">ID</label>
-              <input
-                type="text"
-                class="form-control"
-                name="id"
-                placeholder="Enter ID"
-              />
+        <div class="col-md-6">
+          <div class="card" id="card-container-layout">
+            <div class="card-body" id="card">
+              <h4 class="card-title">Account</h4>
+              <p class="card-text" id="paragraph">Create and Modify Account</p>
+              <a
+                class="btn btn-primary"
+                id="show-btn"
+                href="customer-account.jsp"
+                >Show</a
+              >
             </div>
-            <div class="form-group col-sm-3 mb-3">
-                <label for="type">ID Type</label>
-                <input
-                  type="text"
-                  class="form-control"
-                  name="type"
-                  placeholder="Enter type"
-                />
-            </div>
-            <div class="form-group col-sm-3 mb-3">
-                    <label for="fname">First Name</label>
-                    <input
-                      type="text"
-                      class="form-control"
-                      name="fname"
-                      placeholder="Enter First Name"
-                    />
-            </div>
-            <div class="form-group col-sm-3 mb-3">
-                        <label for="lname">Last Name</label>
-                        <input
-                          type="text"
-                          class="form-control"
-                          name="lname"
-                          placeholder="Enter Last Name"
-                        />
-            </div>
-            <div class="form-group col-sm-3 mb-3">
-                    <label for="street">Street</label>
-                    <input
-                      type="text"
-                      class="form-control"
-                      name="street"
-                      placeholder="Enter Street"
-                    />
-                </div>
-                <div class="form-group col-sm-3 mb-3">
-                    <label for="city">City</label>
-                    <input
-                      type="text"
-                      class="form-control"
-                      name="city"
-                      placeholder="Enter City"
-                    />
-                </div>
-
-                <div class="form-group col-sm-3 mb-3">
-                    <label for="province">Province</label>
-                    <input
-                      type="text"
-                      class="form-control"
-                      name="province"
-                      placeholder="Enter Province"
-                    />
-                </div>
-
-                <div class="form-group col-sm-3 mb-3">
-                    <label for="postal">Postal Code</label>
-                    <input
-                      type="text"
-                      class="form-control"
-                      name="postal"
-                      placeholder="Enter Postal Code"
-                    />
-                </div>
-            </div>
-            <button type="submit" class="btn btn-primary btn-submit-custom">
-              Submit
-            </button>
-          </form>
+          </div>
         </div>
-      </div>
-      <div class="row" id="row">
-        <div class="col-md-12">
-          <form
-            class="form-horizontal"
-            name="city-form"
-            action="city-query.jsp"
-            method="POST"
-          >
-            <div class="form-group col-sm-3 mb-3">
-              <label for="city">City</label>
-              <input
-                type="text"
-                class="form-control"
-                name="city"
-                placeholder="Enter Hotel City"
-              />
+        <div class="col-md-6">
+          <div class="card" id="card-container-layout">
+            <div class="card-body" id="card">
+              <h4 class="card-title">Hotel</h4>
+              <p class="card-text" id="paragraph">
+                Search Rooms and Create Bookings
+              </p>
+              <a class="btn btn-primary" id="show-btn" href="cust-query.jsp"
+                >Show</a
+              >
             </div>
-            
-            </div>
-            <button type="submit" class="btn btn-primary btn-submit-custom col-sm-3">
-              Submit
-            </button>
-          </form>
+          </div>
         </div>
       </div>
     </div>
