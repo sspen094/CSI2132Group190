@@ -39,7 +39,7 @@ pageEncoding="UTF-8" %>
                     <th>Province</th>
                     <th>Postal Code</th>
                     <th>Category</th>
-                    <th>Book</th>
+                    <th>Select</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -53,9 +53,9 @@ pageEncoding="UTF-8" %>
                       <td><%= h.get(6) %></td>
                       <td><%= h.get(7) %></td>
                       <td>
-                        <form action="bookings.jsp" method="GET">
+                        <form action="room-list.jsp" method="GET">
                           <input type="hidden" name="hotel" value="<%= h.get(0) %>">
-                          <button type="submit" class="btn btn-sm btn-success">Book</button>
+                          <button type="submit" class="btn btn-sm btn-primary">Select Hotel</button>
                         </form>
                       </td>
                     </tr>
