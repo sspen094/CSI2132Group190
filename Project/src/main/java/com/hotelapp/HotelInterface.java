@@ -74,7 +74,7 @@ public class HotelInterface {
     }
 
     public static ArrayList<ArrayList<String>> getHotelsInCity(String city) {
-        ArrayList<ArrayList<String>> a = DBModifier.DBQuery("hotel", "c_name, email, address_street, address_city, address_province, address_postal_code, category", "address_city = '" + city + "'");
+        ArrayList<ArrayList<String>> a = DBModifier.DBQuery("hotel", "h_building_no, c_name, email, address_street, address_city, address_province, address_postal_code, category", "address_city = '" + city + "'");
         return a;
     }
 

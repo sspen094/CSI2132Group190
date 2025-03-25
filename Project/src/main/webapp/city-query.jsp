@@ -45,13 +45,13 @@ pageEncoding="UTF-8" %>
                 <tbody>
                   <% for (ArrayList<String> h : hotels) { %>
                     <tr>
-                      <td><%= h.get(0) %></td>
                       <td><%= h.get(1) %></td>
                       <td><%= h.get(2) %></td>
                       <td><%= h.get(3) %></td>
                       <td><%= h.get(4) %></td>
                       <td><%= h.get(5) %></td>
                       <td><%= h.get(6) %></td>
+                      <td><%= h.get(7) %></td>
                       <td>
                         <form action="bookings.jsp" method="GET">
                           <input type="hidden" name="hotel" value="<%= h.get(0) %>">
