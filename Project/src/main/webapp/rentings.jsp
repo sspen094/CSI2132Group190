@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ page import="com.hotelapp.DBModifier" %>
 <%@ page import="java.util.*" %>
+
 <%
   String eid = request.getParameter("eid");
   String hotelId = "";
@@ -38,6 +39,7 @@
 <body>
 <div class="container mt-5">
   <h2>Pending Bookings for Renting</h2>
+
   <form class="row g-3" method="GET" action="rentings.jsp">
     <input type="hidden" name="eid" value="<%= eid %>" />
     <div class="col-md-3">
@@ -100,6 +102,13 @@
       </tbody>
     </table>
   <% } %>
+
+  <!-- 👇 New button to create booking + renting directly -->
+  <form action="create-booking-renting.jsp" method="GET">
+    <input type="hidden" name="eid" value="<%= eid %>" />
+    <button type="submit" class="btn btn-secondary mt-4">Create Booking/Renting</button>
+  </form>
+
 </div>
 </body>
 </html>
