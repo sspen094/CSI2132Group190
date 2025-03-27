@@ -34,7 +34,7 @@
               <p class="card-text" id="paragraph">
                 Create and search rentings
               </p>
-              <a class="btn btn-primary" id="show-btn" href="retnings.jsp"
+              <a class="btn btn-primary" id="show-btn" href="employee-id.jsp"
                 >Show</a
               >
             </div>
