@@ -27,7 +27,9 @@ public class RoomInterface {
     }
 
     private static void roomUpdate(String numKey, String hotelKey, String column, String value){
-        DBModifier.DBUpdateByTwoKeys(TABLE, NUMBER, numKey, HOTEL, hotelKey, column, value);
+        if(value!=null || column==VIEW_TYPE){
+            DBModifier.DBUpdateByTwoKeys(TABLE, NUMBER, numKey, HOTEL, hotelKey, column, value);
+        }
     }
 
     public static void updateNumber(String numKey, String hotelKey, String value){

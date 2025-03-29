@@ -33,7 +33,9 @@ public class HotelInterface {
     }
 
     private static void hotelUpdate(String key, String column, String value){
-        DBModifier.DBUpdateByKey(TABLE, BUILDING_NO, key, column, value);
+        if(value!=null){
+            DBModifier.DBUpdateByKey(TABLE, BUILDING_NO, key, column, value);
+        }
     }
 
     public static void updateBuildingNo(String key, String value){

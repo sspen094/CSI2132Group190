@@ -22,12 +22,13 @@ public class DBModifier {
             String valueParams = "(";
 
             for (Map.Entry<String, String> i : insertMap.entrySet()) {
+                String value = i.getValue()==null? "NULL" : "'"+i.getValue()+"'";
                 if (tableParams.equals("(") && valueParams.equals("(")) {
                     tableParams = tableParams + i.getKey();
-                    valueParams = valueParams + "'" + i.getValue() + "'";
+                    valueParams = valueParams + value;
                 } else {
                     tableParams = tableParams + ", " + i.getKey();
-                    valueParams = valueParams + ", " + "'" +  i.getValue() + "'";
+                    valueParams = valueParams + ", " + value;
                 }
             }
 
@@ -83,7 +84,8 @@ public class DBModifier {
         Class.forName("org.postgresql.Driver");
         Connection db = DriverManager.getConnection(url, username, password);
         Statement st = db.createStatement();
-        String sql = "UPDATE " + tableName + " SET " + column + " = '" + value + "' WHERE " + pkColumn + " = '" + pk + "'";
+        value = value==null? "NULL" : "'"+value+"'";
+        String sql = "UPDATE " + tableName + " SET " + column + " = " + value + " WHERE " + pkColumn + " = '" + pk + "'";
 
         st.executeUpdate(sql);
         st.close();
@@ -100,7 +102,8 @@ public class DBModifier {
             Class.forName("org.postgresql.Driver");
             Connection db = DriverManager.getConnection(url, username, password);
             Statement st = db.createStatement();
-            String sql = "UPDATE " + tableName + " SET " + column + " = '" + value + "' WHERE " + pkColumn1 + " = '" + pk1 + "' AND " + pkColumn2 + " = '" + pk2 + "'";
+            value = value==null? "NULL" : "'"+value+"'";
+            String sql = "UPDATE " + tableName + " SET " + column + " = " + value + " WHERE " + pkColumn1 + " = '" + pk1 + "' AND " + pkColumn2 + " = '" + pk2 + "'";
 
             st.executeUpdate(sql);
             st.close();

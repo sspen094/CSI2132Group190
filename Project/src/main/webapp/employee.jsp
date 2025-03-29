@@ -47,7 +47,7 @@
             <p class="card-text" id="paragraph">
               Modify Hotels
             </p>
-            <a class="btn btn-primary" id="show-btn" href="hotels.jsp"
+            <a class="btn btn-primary" id="show-btn" href="hotel-modification.jsp"
               >Show</a
             >
           </div>
@@ -60,7 +60,7 @@
           <p class="card-text" id="paragraph">
             Modify Rooms
           </p>
-          <a class="btn btn-primary" id="show-btn" href="rooms.jsp"
+          <a class="btn btn-primary" id="show-btn" href="room-modifications.jsp"
             >Show</a
           >
         </div>
