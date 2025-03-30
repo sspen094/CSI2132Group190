@@ -110,5 +110,9 @@
   </form>
 
 </div>
+  <!-- includes payment portion -->
+
+<jsp:include page="submit_payment.jsp" />
+
 </body>
 </html>

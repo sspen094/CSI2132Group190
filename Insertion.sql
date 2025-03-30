@@ -422,3 +422,14 @@ VALUES
 
 -- Employee 3 finalizes bookings in Chicago (Hotel 3)
 ('EMP003', 5);
+
+
+-- INTERTION FOR PAYMENT
+INSERT INTO Payment (r_id, employee_id, amount, payment_method)
+VALUES
+(1, 101, 150.00, 'Credit Card'),
+(2, 102, 200.00, 'Debit Card'),
+(3, 103, 100.00, 'Cash'),
+(4, 104, 250.00, 'Online'),
+(5, 105, 175.50, 'Credit Card');
+

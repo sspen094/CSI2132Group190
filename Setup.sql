@@ -137,15 +137,19 @@ CREATE TABLE IF NOT EXISTS Renting(
 	on update cascade
 );
 
+DROP TABLE IF EXISTS Payment CASCADE;
+
 CREATE TABLE IF NOT EXISTS Payment(
-	r_ID INTEGER PRIMARY KEY,
-	amount DECIMAL(10,2) CHECK (amount >= 0),
-	payment_method VARCHAR(12) CHECK (
-        payment_method IN ('CreditCard', 'DebitCard', 'Cash', 'BankTransfer')
+    payment_id SERIAL PRIMARY KEY,
+    r_ID INTEGER NOT NULL,
+    employee_id INTEGER NOT NULL,
+    payment_date DATE NOT NULL DEFAULT CURRENT_DATE,
+    amount DECIMAL(10,2) NOT NULL CHECK (amount > 0),
+    payment_method VARCHAR(20) NOT NULL CHECK (
+        payment_method IN ('Credit Card', 'Debit Card', 'Cash', 'Online')
     ),
-	FOREIGN KEY (r_ID) REFERENCES Renting(r_ID)
-	on delete cascade
-	on update cascade
+    FOREIGN KEY (r_ID) REFERENCES Renting(r_ID) ON DELETE CASCADE ON UPDATE CASCADE,
+    FOREIGN KEY (employee_id) REFERENCES Employee(employee_id) ON DELETE SET NULL
 );
 
 CREATE OR REPLACE FUNCTION default_room() 
