@@ -34,6 +34,15 @@
               </div>
             </div>
           </div>
+          <div class="col-md-6">
+            <div class="card" id="card-container-layout">
+              <div class="card-body" id="card">
+                <h4 class="card-title">Views</h4>
+                <p class="card-text" id="paragraph">Available Data Views</p>
+                <a class="btn btn-primary" id="show-btn" href="views.jsp">Show Views</a>
+              </div>
+            </div>
+          </div>          
       </div>
     </div>
 
