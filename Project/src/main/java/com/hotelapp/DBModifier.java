@@ -9,7 +9,7 @@ public class DBModifier {
 
     private static final String url = "jdbc:postgresql://localhost:5432/ProjectDatabase";
     private static final String username = "postgres";
-    private static final String password = "postgres";
+    private static final String password = "l1m2d3t4";
 
     public static void DBInsert(String tableName, Map<String,String> insertMap){
 
