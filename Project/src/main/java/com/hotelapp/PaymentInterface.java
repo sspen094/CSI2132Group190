@@ -7,13 +7,15 @@ public class PaymentInterface {
     private static final String TABLE = "payment";
 
     private static final String RENTING_ID = "r_id";
+    private static final String EMPLOYEE = "employee_id";
     private static final String AMOUNT = "amount";
     private static final String METHOD = "payment_method";
 
 
-    public static void paymentInsert(String renting, String amount, String method) {
+    public static void paymentInsert(String renting, String employee, String amount, String method) {
         Map<String,String> rentingMap = new HashMap<String, String>();
         rentingMap.put(RENTING_ID, renting);
+        rentingMap.put(EMPLOYEE, employee);
         rentingMap.put(AMOUNT, amount);
         rentingMap.put(METHOD, method);
 

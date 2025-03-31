@@ -6,7 +6,7 @@
   String eid = request.getParameter("eid");
   String hotelId = "";
 
-  if (eid != null && !eid.isEmpty()) {
+  if (eid != null) {
     ArrayList<ArrayList<String>> empData = DBModifier.DBQuery("employee", "works_for_hotel", "e_id = '" + eid + "'");
     if (empData.size() > 1) {
       hotelId = empData.get(1).get(0);

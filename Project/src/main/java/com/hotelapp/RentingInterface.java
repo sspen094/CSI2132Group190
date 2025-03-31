@@ -26,7 +26,7 @@ public class RentingInterface {
 
         String output = DBModifier.DBInsertWithOutput(TABLE, rentingMap, ID);
 
-        PaymentInterface.paymentInsert(output, amount, method);
+        PaymentInterface.paymentInsert(output, employee, amount, method);
     }
 
 

@@ -427,9 +427,9 @@ VALUES
 -- INTERTION FOR PAYMENT
 INSERT INTO Payment (r_id, employee_id, amount, payment_method)
 VALUES
-(1, 101, 150.00, 'Credit Card'),
-(2, 102, 200.00, 'Debit Card'),
-(3, 103, 100.00, 'Cash'),
-(4, 104, 250.00, 'Online'),
-(5, 105, 175.50, 'Credit Card');
+(1, 'EMP001', 150.00, 'Credit Card'),
+(2, 'EMP001', 200.00, 'Debit Card'),
+(3, 'EMP002', 100.00, 'Cash'),
+(4, 'EMP002', 250.00, 'Online'),
+(5, 'EMP003', 175.50, 'Credit Card');
 
